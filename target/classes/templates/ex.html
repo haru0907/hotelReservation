@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>このドキュメントのタイトル</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{css/style./css}">
+  <link rel="stylesheet"  th:href="@{/css/slick.css}"/>
+  <link rel="stylesheet" th:href="@{/css/slick-theme.css}"/>
+</head>
+
+<body>
+<ul class="slider">
+  <li>
+     <img src="images/ex1.jpg" alt="">
+  </li>
+  <li>
+     <img src="images/ex2.jpg" alt="">
+  </li>
+  <li>
+     <img src="images/ex3.jpg" alt="">
+  </li>
+  <li>
+    <img src="images/ex4.jpg" alt="">
+  </li>
+</ul>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+<script th:src="@{/js/slick.min.js}"></script>
+<script  th:src="@{/js/main.js}"></script>
+
+
+</body>
+</html>

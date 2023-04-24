@@ -1,0 +1,249 @@
+@charset "UTF-8";
+@font-face{
+	font-family:'haru';
+	src:url(/fonts/UDDigiKyokashoN-B.ttc);
+}
+@font-face{
+	font-family:'main';
+	src:url(/fonts/Corporate-Mincho-ver2.otf);
+}
+@font-face{
+	font-family:'keion';
+	src:url(/fonts/keifont.ttf);
+}
+@font-face{
+	font-family:'tanuki';
+	src:url(/fonts/TanukiMagic.ttf);
+}
+@keyframes mask-bg {
+  0% {
+ 
+  }
+  20% {
+    transform: rotateX(0deg);
+    font-size:35px;
+  }
+  40% {
+    transform: rotateX(0deg);
+    font-size:30px;
+  }
+   60% {
+    transform: rotateX(0deg);
+    font-size:35px;
+  }
+    80% {
+    transform: rotateX(0deg);
+    font-size:30px;   
+  }
+  100% {
+	font-size:35px;
+    transform: rotateX(0deg)   
+  }
+}
+@keyframes textAnime{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+html,body{
+	margin:0;
+}
+h1 span{
+   background: -webkit-linear-gradient( 60deg,#12d6df, #f70fff,#faea3d, #fd644f);
+  background-size:400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textAnime 15s infinite;
+}
+.coupon{
+	animation: 5s linear 1s infinite alternate mask-bg;
+	transform-origin:bottom;
+	font-size:30px;
+	position:absolute;
+	height:50px;
+	top:70px;
+	}
+.allContent{
+	display:flex;
+	justify-content:space-around;
+	flex-direction:column;
+	align-items:center;	
+	padding-top:60px;
+	width:100%;
+	height:100%;
+}
+
+/*ヘッダー要素*/
+
+header{
+	display:flex;
+	align-items:center;
+	justify-content:flex-end;
+	padding:0;
+	margin:0;
+	height:70px;
+	border-bottom:solid 1px black;
+	box-shadow:0px 1px 2px black;
+	font-size:30px;
+}
+.gnavi__wrap{
+	width:20%;
+	height:100%;
+	font-family:"keion";
+}
+.gnavi__lists{
+	margin:0;
+	list-style:none;
+	position:relative;
+	width:100%;
+	height:100%;
+	padding:0;
+}
+.gnavi__list{
+	width:100%;
+}
+.gnavi__list > a{
+	width:100%;
+	text-align:center;
+	text-decoration:none;
+	height:47px;
+	position:absolute;
+	padding:3% 0;
+	background-color:#669933;
+	color:white;
+	z-index:5;	
+}
+.gnavi__list > a:hover + ul {
+	transition:.3s;
+	transform: scaleY(1);
+	z-index:2;
+}
+.dropdown__lists:hover{
+	transition:.3s;
+	transform: scaleY(1);
+	z-index:2;
+}
+.dropdown__list > a:hover{
+	color : white;	
+	transition:.3s;
+	z-index:2;
+}
+.dropdown__lists{
+	list-style:none;
+	position:relative;
+	width:100%;	
+	height:100%;
+	padding:0;
+	transform: scaleY(0);/*デフォルトでは非表示の状態にしておく*/
+    transform-origin: center top;/*変形を適応する基準をtopとする*/
+    transition: all .3s;/*表示の変化を0.3秒に指定*/
+    z-index:2;
+    border:solid 1px #669933;
+}
+.dropdown__lists > li > a {
+	list-style:none;
+	text-decoration:none;
+	text-align:center;
+	width:100%;
+	height:100%;
+	transition:.3s;	
+	color:black;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	border-top:solid 1px #669933;
+}
+.dropdown__list{
+	width:100%;	
+	position:relative;
+	height:70px;
+	top:70px;	
+	transition:.5s;
+	background-color:#CCFFCC;
+}
+.logInfo{
+	font-family:"keion";
+	position:relative;
+	color: #66FF66;	
+	text-decoration:none;
+	background-color:transparent;
+	text-align:center;
+	border-radius:20px;
+	padding:5px 10px;
+	border:solid 3px #66FF66;
+	transition:.3s;
+	font-size:30px;	
+	width:25%;
+	margin-right:1%;
+	cursor :default;
+	}
+.logInfo:hover::after,.logInfo:hover::before{	
+	width:50%;
+	transition:.3s;	
+	
+}
+.logInfo:hover{
+	color:white;
+	transition:.3s;
+}
+.logInfo::after{
+	background-color:#66FF66;
+	position:absolute;
+	content:"";
+	height:100%;
+	width:0%;
+	top:0;
+	left:0;
+	border-radius:20px 0px 0px 20px;
+	transition:.3s;	
+	z-index:-2;
+
+}
+.logInfo::before{
+	background-color:#66FF66;
+	position:absolute;
+	content:"";
+	height:100%;
+	width:0%;
+	top:0;
+	right:0;
+	border-radius:0px 20px 20px 0px;
+	transition:.3s;		
+	z-index:-2;
+}
+
+
+.hotelTitle{	
+	font-weight: bold;
+	color: transparent;
+	background: #000;
+	text-shadow: 2px 2px 3px rgba( 255, 255, 255, 0.5);
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size:60px;
+ 	width:50%;
+ 	font-family:"main";
+ 	transition:.3s;
+ 	margin:0;
+ 	position:relative;
+ 	cursor :default;
+}
+.hotelTitle::after{	
+	text-shadow:1px 1px 1px white,1px 1px 2px white,1px 1px 3px white,1px 1px 4px white,5px 5px 1px green;
+	font-size:60px;
+ 	width:100%;
+ 	font-family:"main";
+ 	color:#66FF66;
+ 	transition:.3s;
+ 	margin:0;
+ 	content:"宿予約 OBK";
+ 	position:absolute;
+ 	left:0;
+}
+.hotelTitle:hover::after{
+	transform-origin:top;
+	transform:rotateX(75deg);
+	transition:.5s;
+}
+/**/

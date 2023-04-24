@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link th:href="@{/css/coupon.css}" rel="stylesheet" >
+<meta charset="UTF-8">
+<title>予約完了</title>
+</head>
+<body>
+	<header>
+		<h1 class= "hotelTitle">宿予約 OBK</h1>
+		<span th:class ="logInfo"th:text="''+${session.name}+' さんがログイン中'"></span>					
+		<div class="gnavi__wrap">
+		    <ul class="gnavi__lists">
+		        <li class="gnavi__list">
+		            <a href="#">メニュー</a>
+		            <ul class="dropdown__lists">
+		                 <li class="dropdown__list"><a href="/hotels">TOP</a></li>
+		                <li class="dropdown__list"><a href="/user/info">会員情報変更</a></li>
+		                <li class="dropdown__list"><a href="/reserved/hotel">予約確認</a></li>
+		                <li class="dropdown__list"><a href="/favorite">お気に入り</a></li>
+		                <li class="dropdown__list"><a href="/">ログアウト</a></li>
+		            </ul>
+		        </li>
+	    	</ul>
+		</div>
+	</header>
+	<div class="allContent">
+		<h1 class="coupon"><span>大当たり!!!<span th:text="${coupon}"></span>を獲得しました!!!</span></h1>	
+		<p>ご予約ありがとうございます！</p>
+		<img th:src="@{${'/images/ex'+hotels.hotelCode+'.jpg'}}" alt="">
+		<table border="1">			
+		<tr>
+			<th>ご予約番号</th><th>ご予約ホテル</th><th>料金</th><th>チェックイン日</th><th>チェックイン時刻</th><th>宿泊者様</th><th>宿泊者様お電話番号</th><th>宿泊者様メールアドレス</th>		
+		</tr>
+		<tr>
+			<td th:text="${orders.orderCode}"></td>
+			<td th:text="${hotels.name}">
+			<td th:text="''+${session.price}+'円'"></td>
+			<td th:text="${orders.checkDay}"></td>
+			<td th:text="${orders.checkTime}"></td>
+			<td th:text="''+${users.name}+'様'"></td>
+			<td th:text="${users.phone}"></td>
+			<td th:text="${users.email}"></td>
+		</tr>		
+		</table>
+		<a href="/hotels">ホテル一覧に戻る</a>
+	</div>
+
+
+
+		
+</body>
+</html>

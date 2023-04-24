@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link th:href="@{/css/userInfo.css}" rel="stylesheet">
+<meta charset="UTF-8">
+<title>会員登録情報の変更</title>
+</head>
+<body>
+	<header>
+		<h1 class= "hotelTitle">宿予約 OBK</h1>
+		<span th:class ="logInfo"th:text="''+${session.name}+' さんがログイン中'"></span>						
+		<div class="gnavi__wrap">
+		    <ul class="gnavi__lists">
+		        <li class="gnavi__list">
+		            <a href="#">メニュー</a>
+		            <ul class="dropdown__lists">
+		                 <li class="dropdown__list"><a href="/hotels">TOP</a></li>
+		                <li class="dropdown__list"><a href="/user/info">会員情報変更</a></li>
+		                <li class="dropdown__list"><a href="/reserved/hotel">予約確認</a></li>
+		                <li class="dropdown__list"><a href="/favorite">お気に入り</a></li>
+		                <li class="dropdown__list"><a href="/">ログアウト</a></li>
+		            </ul>
+		        </li>
+	    	</ul>
+		</div>
+	</header>
+	<div class="allContent">
+		<h3>会員登録情報の変更</h3>
+		<form action="/user/info/edit"method="post">
+			<table border="1">
+				<tr>
+					<th>お名前</th>
+					<td><input name="name" type="text"th:value="${users.name}"></td>
+				</tr>
+				<tr>
+					<th>電話番号</th>
+					<td><input name="phone" type="tel"th:value="${users.phone}"></td>
+				</tr>	
+				<tr>	
+					<th>メールアドレス</th>	
+					<td><input name="email" type="email"th:value="${users.email}"></td>
+				</tr>
+				<tr>	
+					<th>現在のパスワード</th>	
+					<td><input name="password" type="password"></td>
+				</tr>
+				<tr>	
+					<th>新しいパスワード</th>	
+					<td><input name="newPassword" type="password"></td>
+				</tr>
+				<tr>	
+					<th>新しいパスワードの再入力</th>	
+					<td><input name="confirmPassword" type="password"></td>
+				</tr>		
+				<tr>
+					<th>利用可能クーポン</th>
+					<td th:if="${users.couponCode == 4}"th:text=クーポンを所有しておりません></td>
+					<td th:if="${users.couponCode != 4}" th:text ="${coupon.name}"></td>
+				</tr>					
+			</table>
+			<input type="submit" value="変更">	 
+			<span th:text="${message}" style="color:red"></span>
+		</form>
+	</div>
+</body>
+</html>

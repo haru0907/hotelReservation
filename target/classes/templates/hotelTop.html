@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" th:href="@{css/style./css}">
+  <link rel="stylesheet"  th:href="@{/css/slick.css}"/>
+  <link rel="stylesheet" th:href="@{/css/slick-theme.css}"/>
+  
+<link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css">
+<meta charset="UTF-8">
+<title>ホテルTOP（仮）</title>
+</head>
+<body>	
+	<header>
+		<h1 class= "hotelTitle">宿予約 OBK</h1>
+		<span th:class ="logInfo"th:text="''+${session.name}+' さんがログイン中'"></span>
+						
+	<div class="gnavi__wrap">
+    	<ul class="gnavi__lists">
+        	<li class="gnavi__list">
+            	<a href="#">メニュー</a>
+            	<ul class="dropdown__lists">
+	                <li class="dropdown__list"><a href="/hotels">TOP</a></li>
+	                <li class="dropdown__list"><a href="/user/info">会員情報変更</a></li>
+	                <li class="dropdown__list"><a href="/reserved/hotel">予約確認</a></li>
+	                <li class="dropdown__list"><a href="/favorite">お気に入り</a></li>
+	                <li class="dropdown__list"><a href="/">ログアウト</a></li>
+            	</ul>
+        	</li>
+    	</ul>
+	</div>
+	</header>
+	
+	
+	<ul class="slider">
+  <li>
+     <img src="images/slider1.jpg" alt="">
+  </li>
+  <li>
+     <img src="images/slider2.jpg" alt="">
+  </li>
+  <li>
+     <img src="images/slider3.jpg" alt="">
+  </li>
+  <li>
+    <img src="images/slider4.jpg" alt="">
+  </li>
+</ul>
+	
+	<div class="contentAll">
+		<div class="leftContent">
+			<div class="serachContent">
+				<p class="searchWord">キーワードから探す</p>
+				<form class="search" action="/hotels">	
+					<input th:class="searchBox" type="text" name="keyword" th:value="${keyword}"size="5" > 
+					<input class= "searchButton"type="submit" value="検索">
+				</form>
+			</div>
+			<div class="searchPrice">
+				<p class="searchWord">宿泊地・料金から探す</p>
+				<form class="searchAll"action="/hotels" >	
+					<div class="tekito">
+						<p class="priceTitle">宿泊料金</p>
+						<select class="priceBox" name="min_price">
+							<option  value="0">下限なし</option>
+							<option value="5000">5,000円</option>
+							<option value="10000">10,000円</option>
+							<option value="15000">15,000円</option>
+							<option value="20000">20,000円</option>
+							<option value="25000">25,000円</option>
+							<option value="30000">30,000円</option>
+							<option value="35000">35,000円</option>
+							<option value="40000">40,000円</option>
+							<option value="45000">45,000円</option>
+							<option value="50000">50,000円</option>
+							<option value="60000">60,000円</option>
+							<option value="70000">70,000円</option>
+							<option value="80000">80,000円</option>
+							<option value="90000">90,000円</option>
+							<option value="100000">100,000円</option>
+							<option value="150000">150,000円</option>
+							
+						</select>
+						<p>～</p>
+						<select class="priceBox" name="max_price">
+							<option  value="900000">上限なし</option>
+							<option value="5000">5,000円</option>
+							<option value="10000">10,000円</option>
+							<option value="15000">15,000円</option>
+							<option value="20000">20,000円</option>
+							<option value="25000">25,000円</option>
+							<option value="30000">30,000円</option>
+							<option value="35000">35,000円</option>
+							<option value="40000">40,000円</option>
+							<option value="45000">45,000円</option>
+							<option value="50000">50,000円</option>
+							<option value="60000">60,000円</option>
+							<option value="70000">70,000円</option>
+							<option value="80000">80,000円</option>
+							<option value="90000">90,000円</option>
+							<option value="100000">100,000円</option>
+							<option value="150000">150,000円</option>
+						</select>
+					</div>
+			<!--  下限<input type="text" name="min_price" size="5" th:value="${minPrice}">
+			上限<input type="text" name="max_price" size="5" th:value="${maxPrice}">-->		
+			  		<div class="tekito">
+			  			<p class="priceTitle">宿泊地</p>
+			  			<select class="priceBox" name="keyword" th:value="${keyword}">			  			
+							<option  value="">指定なし</option>	
+							<option  disabled class="area">北海道</option>	
+							<option  value=北海道>北海道</option>	
+							<option  disabled class="area">東北</option>	
+							<option  value=岩手>岩手県</option>
+							<option  value=宮城>宮城県</option>
+							<option  value=青森>青森県</option>	
+							<option  value=秋田>秋田県</option>
+							<option  value=福島>福島県</option>	
+							<option  value=山形>山形県</option>	
+							<option  disabled class="area">北関東</option>	
+							<option  value=栃木>栃木県</option>	
+							<option  value=茨城>茨城県</option>
+							<option  value=群馬>群馬県</option>
+							<option  disabled class="area">関東</option>	
+							<option  value=千葉>千葉県</option>	
+							<option  value=埼玉>埼玉県</option>
+							<option  value=東京>東京都</option>	
+							<option  value=神奈川>神奈川県</option>
+							<option  disabled class="area">甲信越</option>	
+							<option  value=新潟>新潟県</option>	
+							<option  value=山梨>山梨県</option>
+							<option  value=長野>長野県</option>	
+							<option  disabled class="area">北陸</option>	
+							<option  value=富山>富山県</option>	
+							<option  value=石川>石川県</option>
+							<option  value=福井>福井県</option>
+							<option  disabled class="area">東海</option>	
+							<option  value=愛知>愛知県</option>	
+							<option  value=三重>三重県</option>
+							<option  value=岐阜>岐阜県</option>
+							<option  value=静岡>静岡県</option>	
+							<option  disabled class="area">近畿</option>	
+							<option  value=奈良>奈良県</option>	
+							<option  value=兵庫>兵庫県</option>
+							<option  value=大阪>大阪府</option>
+							<option  value=京都>京都府</option>	
+							<option  value=和歌山>和歌山県</option>
+							<option  value=滋賀>滋賀県</option>
+							<option  disabled class="area">山陽・山陰</option>	
+							<option  value=岡山>岡山県</option>	
+							<option  value=島根>島根県</option>
+							<option  value=鳥取>鳥取県</option>
+							<option  value=広島>広島県</option>	
+							<option  value=山口>山口県</option>
+							<option  disabled class="area">四国</option>	
+							<option  value=徳島>徳島県</option>
+							<option  value=香川>香川県</option>
+							<option  value=愛媛>愛媛県</option>	
+							<option  value=高知>高知県</option>
+							<option  disabled class="area">九州</option>	
+							<option  value=福岡>福岡県</option>
+							<option  value=佐賀>佐賀県</option>
+							<option  value=長崎>長崎県</option>	
+							<option  value=熊本>熊本県</option>
+							<option  value=大分>大分県</option>
+							<option  value=宮崎>宮崎県</option>
+							<option  value=鹿児島>鹿児島県</option>
+							<option  disabled class="area">沖縄</option>	
+							<option  value=沖縄>沖縄県</option>										
+						</select>				
+					</div>
+					<div class="tekito">
+					<!--  
+							<p class="priceTitle">キーワード</p>
+							
+							<input th:class="searchBox" type="text" name="keyword" th:value="${keyword}"size="5" >
+					-->
+					</div>
+					
+					<div class="tekito2">
+						<input class="searchButton" type="submit" value="検索">
+					</div>
+				</form>
+				<div class="sort">
+					<ul>
+					<li><a>並び替え</a>
+						<ul>
+							<li><a th:href="@{'/hotels?sort=price_asc&min_price=' + ${minPrice} + '&max_price=' + ${maxPrice}+ '&keyword=' + ${keyword}}">価格が安い順</a></li> 
+							<li><a th:href="@{'/hotels?sort=price_desc&min_price=' + ${minPrice} + '&max_price=' + ${maxPrice}+ '&keyword=' + ${keyword}}">価格が高い順</a></li>
+						</ul>
+					</li>
+					</ul>	
+				</div>	
+			</div>
+		</div>
+		<div class ="main">
+			
+			<table border="1">
+			<thead><tr><th></th></tr></thead>
+				<tr th:class="hotelMain" th:each="hotel:${hotels}">
+					<td th:id = "hotelImage">		
+						<form th:class = "srcClik"method="GET" th:action="'/hotels/' + ${hotel.hotelCode}+'/reserve'">
+							<input class = "srcSubmit" type="image" th:src="@{${'/images/ex'+hotel.hotelCode+'.jpg'}}"value="">
+						</form>
+					</td>
+			
+			<!-- クエリの時は@ほしい？
+			画像表示は＠なくてもうごく
+			<td><img th:src="${'/images/ex'+hotel.hotelsCode+'.jpg'}"></td> -->
+			<!--  <td th:if="${hotel.hotelsCode == 2}"><img src="/images/ex2.jpg" alt="ex2"></td>
+			<td th:if="${hotel.hotelsCode == 3}"><img src="/images/ex3.jpg" alt="ex3"></td>-->
+					
+					<td th:class="hotelName"th:text="${hotel.name}"></td>					
+					<td th:class="hotelName"th:text="${hotel.area}"></td>
+					<td th:class="hotelName"th:text="''+${hotel.price}+'円'"></td>
+				
+					<td class ="setButton">
+						<form method="GET" th:action="'/hotels/' + ${hotel.hotelCode}+'/reserve'">
+							<input type="submit" value="予約">
+						</form>
+						<form method="GET" th:action="'/favorite/add/' + ${hotel.hotelCode}">
+							<input type="submit" value="お気に入り">
+						</form>
+					</td>				
+				</tr>
+				
+			</table>		
+		</div>
+	</div>	
+		<hr>
+		<span th:replace="logout"></span>
+	
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+<script th:src="@{/js/slick.min.js}"></script>
+<script  th:src="@{/js/main.js}"></script>
+</body>
+</html>

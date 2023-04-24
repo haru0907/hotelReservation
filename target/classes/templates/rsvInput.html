@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link th:href="@{/css/rsvInput.css}" rel="stylesheet">
+<meta charset="UTF-8">
+<title>ご予約フォーム</title>
+</head>
+<body>
+	<header>
+		<h1 class= "hotelTitle">宿予約 OBK</h1>
+		<span th:class ="logInfo"th:text="''+${session.name}+' さんがログイン中'"></span>						
+		<div class="gnavi__wrap">
+		    <ul class="gnavi__lists">
+		        <li class="gnavi__list">
+		            <a href="#">メニュー</a>
+		            <ul class="dropdown__lists">
+		                 <li class="dropdown__list"><a href="/hotels">TOP</a></li>
+		                <li class="dropdown__list"><a href="/user/info">会員情報変更</a></li>
+		                <li class="dropdown__list"><a href="/reserved/hotel">予約確認</a></li>
+		                <li class="dropdown__list"><a href="/favorite">お気に入り</a></li>
+		                <li class="dropdown__list"><a href="/">ログアウト</a></li>
+		            </ul>
+		        </li>
+	    	</ul>
+		</div>
+	</header>
+	<div class="allContent">
+	<h1>ご予約フォーム</h1>
+		<form action="/hotels/confirm" method="post">
+			<table border="1">
+				<tr th:each="hotel:${session.hotel}">
+					<td><img th:src="@{${'/images/ex'+hotel.hotelCode+'.jpg'}}"></td>
+					<td th:text="${hotel.name}"></td>
+					<td th:text="${hotel.price}"></td>
+					<td th:text="${hotel.area}"></td>
+				</tr>
+				<tr>
+					<th>チェックイン</th>
+					<td>
+						<input type="date" name = date>
+					<td>
+						<input type="time"name=time>
+					</td>
+				</tr>
+				<tr th:if="${userCoupon != 4}">
+					<th><span th:text ="${userCoupon.name}"></span></th>
+					<td>
+						<input type="radio" name="couponUse"value="1" > 使う
+						<input type="radio" name="couponUse" value="2"> 使わない
+					</td>
+				</tr>
+			</table>
+			<input type="submit" value="予約">
+		</form>
+	</div>
+</body>
+</html>
