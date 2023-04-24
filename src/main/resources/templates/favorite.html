@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link th:href="@{/css/favorite.css}" rel="stylesheet">
+<meta charset="UTF-8">
+<title>お気に入りホテル</title>
+</head>
+<body>
+	<header>
+		<h1 class= "hotelTitle">宿予約 OBK</h1>
+		<span th:class ="logInfo"th:text="''+${session.name}+' さんがログイン中'"></span>						
+		<div class="gnavi__wrap">
+		    <ul class="gnavi__lists">
+		        <li class="gnavi__list">
+		            <a href="#">メニュー</a>
+		            <ul class="dropdown__lists">
+		                 <li class="dropdown__list"><a href="/hotels">TOP</a></li>
+		                <li class="dropdown__list"><a href="/user/info">会員情報変更</a></li>
+		                <li class="dropdown__list"><a href="/reserved/hotel">予約確認</a></li>
+		                <li class="dropdown__list"><a href="/favorite">お気に入り</a></li>
+		                <li class="dropdown__list"><a href="/">ログアウト</a></li>
+		            </ul>
+		        </li>
+	    	</ul>
+		</div>
+	</header>
+	<div class="allContent">
+	<h1>お気に入りホテル</h1>
+		<table border="1">
+			<tr>
+				<th></th><th>ホテル名</th><th>都道府県</th><th>値段</th>
+			</tr>
+			<!--/* Step3 セッションから直接カートの中身を取得して表示 */-->
+			<tr th:each="favorite:${session.favorite.favorite}">
+			<td><img th:src="@{${'/images/ex'+favorite.value.hotelCode+'.jpg'}}"></td>
+				<!--itemにはvalueとINtegerが入ってるからvalueを指定してとる-->
+				<td th:text="${favorite.value.name}"></td>
+				<td th:text="${favorite.value.area}"></td>
+				<td th:text="${favorite.value.price}"></td>
+				<td><a th:href="'/hotels/'+${favorite.value.hotelCode}+'/reserve'">予約</a></td>
+				<td><a th:href="'/favorite/delete/'+${favorite.value.hotelCode}">削除</a></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
